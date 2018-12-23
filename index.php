@@ -22,7 +22,7 @@
     </div>
 
     <form action="search.php" method="get">
-      <input type="text" name="q" autofocus>
+      <input type="text" name="q" required autofocus>
 
       <select name="upstream">
         <?php
