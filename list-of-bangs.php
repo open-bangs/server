@@ -38,6 +38,11 @@
           }
         ?>
       </ul>
+
+      <p>
+        Want to add or edit a bang?
+        Create new issue or make pull request on <a href="https://github.com/open-bangs/dataset">Github</a>.
+      </p>
     </div>
 
     <hr>
