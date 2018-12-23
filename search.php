@@ -59,8 +59,6 @@
     $bang_keyword = containsBangs($query);
 
     if($bang_keyword) {
-        $url = array_search($bang, $bangs);
-
         // TODO: Replace hacky script
         foreach($bangs as $bang) {
             if($bang["keyword"] == "$bang_keyword") {
