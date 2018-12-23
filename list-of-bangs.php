@@ -1,5 +1,14 @@
 <?php
   require_once("config.php");
+    
+  $data = json_decode(file_get_contents("./dataset/data.json"), true);
+
+  if($data["version"] != $allowed_data_version) {
+    $err = "Version of data is invalid. Please update your open-bangs server.";
+
+    print("ERROR: " . $err);
+    throw new Exception($err);
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,8 +17,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Open Bangs</title>
-  
+  <title>List of bangs</title>
+
   <link rel="stylesheet" href="./assets/style.css">
   <link rel="stylesheet" href="./assets/fonts.css">
 </head>
@@ -18,26 +27,22 @@
 
   <div class="container">
     <div id="logo">
-      <h1>Open Bangs</h1>
+      <h1>List of bangs</h1>
     </div>
 
-    <form action="search.php" method="get">
-      <input type="text" name="q" autofocus>
-
-      <select name="upstream">
+    <div id="list">
+      <ul>
         <?php
-          foreach($upstreams as $name => $data) {
-            print("<option value=\"$name\">$name</option>");
+          foreach($data["data"] as $bang) {
+            echo "<li>" . $bang["keyword"] . "</li>";
           }
         ?>
-      </select>
-
-      <input type="submit" value="Search">
-    </form>
+      </ul>
+    </div>
 
     <hr>
 
-    <a href="./list-of-bangs.php">List of bangs</a>
+    <a href="./">Back to frontpage</a>
   </div>
 
   <!-- Fork me on Github ribbon -->

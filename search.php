@@ -4,8 +4,6 @@
     // PARSE DATA
     $data = json_decode(file_get_contents("./dataset/data.json"), true);
 
-    $allowed_data_version = 1;
-
     if($data["version"] != $allowed_data_version) {
         $err = "Version of data is invalid. Please update your open-bangs server.";
 
