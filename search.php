@@ -16,11 +16,28 @@
     $bangs = $data["data"];
 
 
+    $query = $_GET["q"];
+    $upstream = $_GET["upstream"];
 
-    function getFallbackUrl($query) {
-        global $fallback;
 
-        return str_replace("%s", $query, $fallback);
+    $upstream_data = $upstreams[$upstream];
+
+    if(!$upstream_data) {
+        $err = "Upstream not found.";
+
+        print("ERROR: " . $err);
+        // throw new Exception($err);
+        exit();
+    }
+
+    $upstream_url = $upstream_data["url"];
+    
+
+
+    function getFallbackUrl($query, $upstream) {
+        global $upstream_url;
+
+        return str_replace("%s", $query, $upstream_url);
     }
 
     function containsBangs($query) {
@@ -38,8 +55,6 @@
         }
         return false;
     }
-
-    $query = $_GET["q"];
 
     $bang_keyword = containsBangs($query);
 
@@ -63,5 +78,5 @@
         // Throw Exception if not found
         throw new Exception();
     } else {
-        header("Location: " . getFallbackUrl($query));
+        header("Location: " . getFallbackUrl($query, $upstream));
     }

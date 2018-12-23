@@ -1,0 +1,14 @@
+{
+  "duckduckgo": {
+    "url": "https://duckduckgo.com/?q=%s"
+  },
+  "qwant": {
+    "url": "https://www.qwant.com/?q=%s"
+  },
+  "startpage": {
+    "url": "https://www.startpage.com/do/metasearch.pl?query=%s"
+  },
+  "google": {
+    "url": "https://www.google.com/search?q=%s"
+  }
+}
