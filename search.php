@@ -64,9 +64,7 @@
         // TODO: Replace hacky script
         foreach($bangs as $bang) {
             if($bang["keyword"] == "$bang_keyword") {
-                print_r($bang);
-
-                $cleaned_query = str_replace("!$bang", "", $query);
+                $cleaned_query = str_replace("!$bang_keyword", "", $query);
 
                 header("Location: " . str_replace("%s", $cleaned_query, $bang["url"]));
 
